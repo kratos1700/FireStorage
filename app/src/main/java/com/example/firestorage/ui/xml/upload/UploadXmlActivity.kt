@@ -1,28 +1,47 @@
 package com.example.firestorage.ui.xml.upload
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.firestorage.R
 import com.example.firestorage.databinding.ActivityUploadXmlBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Objects
 
 @AndroidEntryPoint
 class UploadXmlActivity : AppCompatActivity() {
 
     companion object {
         // esta función estática es para crear un intent que se usará para navegar a esta actividad
-        fun create(context: Context) :Intent = Intent(context, UploadXmlActivity::class.java)
+        fun create(context: Context): Intent = Intent(context, UploadXmlActivity::class.java)
     }
 
     private lateinit var binding: ActivityUploadXmlBinding
 
     private val uploadViewModel: UploadXmlViewModel by viewModels()
+
+    private lateinit var uri: Uri  // uri de la foto tomada con la cámara
+    private var intentCameraLauncher =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) {
+            // aquí se recibe el resultado de la cámara
+            if (it && uri.path?.isNotEmpty() == true) {
+                uploadViewModel.uploadSimpleImage(uri)
+            }
+
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -46,5 +65,32 @@ class UploadXmlActivity : AppCompatActivity() {
 
     private fun initListeners() {
 
+        binding.fabImage.setOnClickListener {
+            takePicture()
+
+        }
+
+    }
+
+    private fun generateUri() {
+        uri = FileProvider.getUriForFile(
+            Objects.requireNonNull(this),
+            "com.example.firestorage.provider",
+            createFile()
+        )
+    }
+
+    private fun takePicture() {
+        generateUri()
+        intentCameraLauncher.launch(uri)
+    }
+
+
+    @SuppressLint("SimpleDateFormat")
+    private fun createFile(): File {
+
+        val name: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date()) + "image"
+
+     return   File.createTempFile(name, ".jpg", externalCacheDir)
     }
 }

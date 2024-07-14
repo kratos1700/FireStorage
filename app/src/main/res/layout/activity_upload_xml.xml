@@ -7,4 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".ui.xml.upload.UploadXmlActivity">
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_camera"
+        app:backgroundTint="@color/yellow"
+        app:tint="@color/white"
+
+
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

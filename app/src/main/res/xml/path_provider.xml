@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Paths>
+    <external-cache-path
+        name="my_image"
+        path="/" />
+</Paths>
+
+<!--
+este archivo se utiliza para definir los paths que se pueden utilizar en la aplicacion
+en este caso se define un path que se puede utilizar para guardar imagenes en la cache
+de la aplicacion
+
+
+-->
