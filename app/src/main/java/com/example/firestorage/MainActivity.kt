@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.firestorage.databinding.ActivityMainBinding
+import com.example.firestorage.ui.compose.upload.UploadComposeActivity
 import com.example.firestorage.ui.xml.upload.UploadXmlActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
         }
         binding.btnNavigateToCompose.setOnClickListener {
+            // Navegar a la actividad UploadComposeActivity
+            startActivity(UploadComposeActivity.create(this))
 
         }
 
