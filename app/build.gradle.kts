@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.googleDaggerHilt)
     id ("kotlin-kapt")
     alias(libs.plugins.google.gms.google.services)
+
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -39,6 +41,14 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
@@ -66,4 +76,16 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
+    //Compose
+    implementation (platform(libs.androidx.compose.bom))
+    implementation (libs.androidx.ui)
+    implementation(libs.androidx.material3)
+    implementation (libs.androidx.runtime)
+    implementation (libs.androidx.ui.graphics)
+    implementation (libs.androidx.ui.tooling.preview)
+    implementation (libs.androidx.activity.compose)
+    implementation(libs.coil.compose)
+
 }

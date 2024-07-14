@@ -6,9 +6,10 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
-material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
+
+material = "1.12.0"
 
 #Hilt
 daggerHilt = "2.48"
@@ -19,6 +20,13 @@ googleGmsGoogleServices = "4.4.2"
 firebaseStorage = "21.0.0"
 firebaseBom = "33.1.2"
 
+
+#COMPOSE
+coilCompose = "2.4.0"
+composeBom = "2024.06.00"
+activityCompose = "1.9.0"
+
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -28,6 +36,19 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+
+#COMPOSE
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-runtime = { module = "androidx.compose.runtime:runtime" }
+androidx-ui = { module = "androidx.compose.ui:ui" }
+androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+
+
 
 #Hilt
 com-google-dagger = { group = "com.google.dagger", name = "hilt-android", version.ref = "daggerHilt" }
@@ -46,3 +67,6 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 googleDaggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "daggerHilt" }
 devtoolsKsp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
+
+# pel compilador
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin"}

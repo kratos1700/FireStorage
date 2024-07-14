@@ -5,4 +5,6 @@ plugins {
 
     alias(libs.plugins.googleDaggerHilt) apply false
     alias(libs.plugins.google.gms.google.services) apply false
+
+    alias(libs.plugins.compose.compiler) apply false
 }
