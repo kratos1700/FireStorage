@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+ //   alias(libs.plugins.devtoolsKsp)
+    alias(libs.plugins.googleDaggerHilt)
+    id ("kotlin-kapt")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -33,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -42,6 +49,20 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    //Firebase
+    implementation(libs.firebase.bom)
+    implementation(libs.firebase.storage)
+
+
+    //Dagger Hilt
+    implementation(libs.com.google.dagger)
+    //  ksp(libs.com.google.dagger.compiler)
+    kapt(libs.com.google.dagger.compiler)
+    implementation(libs.com.google.dagger.navigation)
+
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
