@@ -8,20 +8,59 @@
     tools:context=".ui.xml.upload.UploadXmlActivity">
 
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvImage"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="36dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="12dp"
+        >
+
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            />
+
+        <ImageView
+            android:id="@+id/ivPlaceholder"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_upload_image"
+            app:tint="@color/yellow"
+            />
+
+        <ProgressBar
+            android:id="@+id/pbImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/yellow"
+            android:visibility="gone"/>
+
+    </androidx.cardview.widget.CardView>
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:backgroundTint="@color/yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvImage"
         app:srcCompat="@drawable/ic_camera"
-        app:backgroundTint="@color/yellow"
-        app:tint="@color/white"
 
 
-        />
+        app:tint="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

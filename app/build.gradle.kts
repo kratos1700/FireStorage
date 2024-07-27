@@ -73,6 +73,13 @@ dependencies {
     implementation(libs.com.google.dagger.navigation)
 
 
+    //Glide
+    implementation (libs.glide)
+
+    //Coil
+    implementation(libs.coil.compose)
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
