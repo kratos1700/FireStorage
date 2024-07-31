@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide
 import com.example.firestorage.R
 import com.example.firestorage.databinding.ActivityUploadXmlBinding
 import com.example.firestorage.databinding.DialogImageSelectorBinding
+import com.example.firestorage.ui.xml.list.ListXmlActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.File
@@ -122,6 +123,10 @@ class UploadXmlActivity : AppCompatActivity() {
             // takePicture()
             showImageDialog()
 
+        }
+
+        binding.btnNavigateToList.setOnClickListener {
+            startActivity(ListXmlActivity.create(this)) // navegar a la actividad ListXmlActivity
         }
 
     }

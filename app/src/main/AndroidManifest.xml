@@ -16,6 +16,12 @@
         android:theme="@style/Theme.FireStorage"
         tools:targetApi="31">
         <activity
+            android:name=".ui.compose.list.ListComposeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.xml.list.ListXmlActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.compose.upload.UploadComposeActivity"
             android:exported="false" />
         <activity
@@ -31,8 +37,6 @@
             </intent-filter>
         </activity>
 
-
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.firestorage.provider"
@@ -42,8 +46,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/path_provider" />
         </provider>
-        
-        
     </application>
 
 </manifest>

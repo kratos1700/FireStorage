@@ -98,5 +98,43 @@ class StorageService @Inject constructor(private val storage: FirebaseStorage) {
 
     }
 
+    // esta función suspendida se encarga de eliminar una imagen subida a Firebase Storage
+    private fun removeImage(): Boolean {
+        val reference =
+            storage.reference.child("download/imagen.jpg") // aquí se crea una referencia al archivo a eliminar
+        return reference.delete().isSuccessful // aquí se elimina el archivo y se retorna si la operación fue exitosa
+    }
+
+
+    // esta funcion se encarga de subir una imagen a Firebase Storage y obtener el progreso de la subida
+    private fun uploadImageWithProgress(uri: Uri) {
+        val reference =
+            storage.reference.child("download/${uri.lastPathSegment}") // aquí se crea una referencia al archivo en el storage de Firebase con el nombre del archivo
+        reference.putFile(uri)
+            .addOnProgressListener {
+                val progress =
+                    (100.0 * it.bytesTransferred) / it.totalByteCount  // aquí se calcula el progreso de la subida
+                Log.i("PROGRESS", "Upload is $progress% done")
+            }
+    }
+
+
+    // esta funcion se encarga de obtener todas las imágenes subidas a Firebase Storage
+     suspend fun getAllImages(): List<Uri> {
+      //  val reference = storage.reference.child("download/")
+        val reference = storage.reference
+
+        //  reference.listAll().addOnSuccessListener {  // aquí se obtienen todas las imágenes subidas a Firebase Storage
+        //    it.items.forEach { item ->    // aquí se recorren todas las imágenes
+        //      Log.i("ITEM", item.name)
+        // }
+        //}
+        return reference.listAll()
+            .await().items.map {  // aqui recorre todas las imagenes y las devuelve en una lista nueva
+            it.downloadUrl.await()  // aquí se obtiene la url de descarga de la imagen subida a Firebase Storage y se resuelve la suspensión
+
+        }
+    }
+
 
 }

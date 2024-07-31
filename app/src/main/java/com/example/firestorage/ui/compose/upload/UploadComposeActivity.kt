@@ -14,6 +14,7 @@ import androidx.compose.foundation.border
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -45,6 +46,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -58,6 +60,7 @@ import androidx.core.view.WindowInsetsCompat
 import coil.compose.AsyncImage
 import com.example.firestorage.R
 import com.example.firestorage.databinding.ActivityUploadComposeBinding
+import com.example.firestorage.ui.compose.list.ListComposeActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.text.SimpleDateFormat
@@ -259,6 +262,23 @@ class UploadComposeActivity : AppCompatActivity() {
 
             Spacer(modifier = Modifier.weight(1f))
 
+            val context = LocalContext.current
+
+            OutlinedButton(
+                onClick = { startActivity(ListComposeActivity.create(context = context)) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(36.dp)
+                 .align(Alignment.CenterHorizontally),
+                border = BorderStroke(2.dp, colorResource(id = R.color.green)), shape = RoundedCornerShape(42)
+            ) {
+
+                Text("Navigate to Gallery", color = colorResource(id = R.color.green))
+
+            }
+
+            Spacer(modifier = Modifier.weight(1f))
+
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 FloatingActionButton(onClick = {
                     showImageDialog = true  // se muestra el dialogo de selección de imagen
@@ -273,7 +293,12 @@ class UploadComposeActivity : AppCompatActivity() {
 
             }
 
+
         }
+
+          //   Spacer(modifier = Modifier.weight(1f))
+
+
 
 
     }
